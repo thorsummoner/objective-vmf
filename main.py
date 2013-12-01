@@ -1,5 +1,8 @@
+#!/usr/bin/python
 import Tkinter as tk
 import ttk, sys, obj
+obj.load('monkey_vector')
+sys.exit()
 class Application(tk.Frame):
 	def __init__(self, master=None):
 		print('initializing')
@@ -16,5 +19,4 @@ class Application(tk.Frame):
 	def quit(self):
 		print('terminating')
 		sys.exit()
-
 Application().mainloop()
