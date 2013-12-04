@@ -1,24 +1,35 @@
-#!/usr/bin/python
-import Tkinter as tk
-import ttk, sys, obj
-obj.load('monkey_vector')
-sys.exit()
+#!/usr/bin/python2
+import sys
+from Tkinter import *
+import ttk
+import obj
 
-class Application(tk.Frame):
-	def __init__(self, master=None):
-		print('initializing')
-		tk.Frame.__init__(self, master)
-		self.master.title('Application')
-		self.grid()
-		self.createWidgets()
-	def createWidgets(self):
-		self.quitButton = ttk.Button(self, text='Quit', command=self.quit)
-		self.quitButton.grid()
+def main(argv):
+	class Application(Frame):
+		def __init__(self, master=None):
+			print('[Application] initializing')
+			self.master = master
+			Frame.__init__(self, master)
+			self.pack()
+			self.createWidgets()
+			master.protocol("WM_DELETE_WINDOW", self.exit)
+			print('[Application] initialized')
 
-		self.testButton = ttk.Button(self, text='Test', command=obj.load)
-		self.testButton.grid()
-	def quit(self):
-		print('terminating')
-		sys.exit()
+		def createWidgets(self):
+			self.quitButton = ttk.Button(self, text='Quit', command=self.quit)
+			self.quitButton.grid()
 
-Application().mainloop()
+			self.testButton = ttk.Button(self, text='Test', command=obj.load)
+			self.testButton.grid()
+
+		def exit(self):
+			print('[Application] exit')
+			self.master.destroy()
+			self.master.quit()
+
+	root = Tk()
+	app = Application(master=root)
+	app.mainloop()
+
+if __name__ == "__main__":
+	main(sys.argv)

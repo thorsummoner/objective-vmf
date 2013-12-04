@@ -1,6 +1,6 @@
 #obj
 import os
-def load(fname, directory = 'obj_sample'):
+def load(fname='monkey_vector.obj', directory='obj_sample'):
 	fileExists = False;
 	from pprint import pprint
 	# Try all file name corrections until file exists
