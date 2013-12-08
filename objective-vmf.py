@@ -6,6 +6,7 @@ try:
 	from gi.repository import Gtk
 	import obj
 except ImportError as err:
+	# Wrap any specific, common, import shortfalls here.
 	raise err;
 	sys.exit()
 
@@ -17,11 +18,6 @@ def main(argv):
 	class ObjectiveVmf(Gtk.Window):
 		def __init__(self):
 			print('[Application] initializing')
-			Gtk.Window.__init__(self, title="Objective Vmf")
-
-			self.button = Gtk.Button(label="Test")
-			self.button.connect("clicked", self.test)
-			self.add(self.button)
 
 			print('[Application] initialized')
 
@@ -33,11 +29,20 @@ def main(argv):
 			print('[Application] exit')
 			Gtk.main_quit(self, args, kwargs)
 
+	application = ObjectiveVmf();
 
-	win = ObjectiveVmf()
-	win.connect("delete-event", win.exit)
-	win.show_all()
+	builder = Gtk.Builder()
+	builder.add_from_file("asset/objective-vmf-main.glade")
+	builder.connect_signals(application)
+
+	window = builder.get_object("main")
+	window.show_all()
+
+	# try:
 	Gtk.main()
+	# except KeyboardInterrupt:
+	# 	application.exit()
+
 
 if __name__ == "__main__":
 	main(sys.argv)
