@@ -13,6 +13,7 @@
         <property name="can_focus">False</property>
         <property name="margin_left">10</property>
         <property name="margin_right">10</property>
+        <property name="vexpand">True</property>
         <property name="ypad">10</property>
         <property name="pixbuf">objective-vmf_128x128.png</property>
       </object>
@@ -43,11 +44,10 @@
         <property name="margin_left">10</property>
         <property name="margin_right">10</property>
         <property name="margin_bottom">8</property>
-        <property name="vexpand">True</property>
         <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">button</property>
+            <property name="label" translatable="yes">Export Obj</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="receives_default">True</property>
@@ -63,7 +63,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button2">
-            <property name="label" translatable="yes">button</property>
+            <property name="label" translatable="yes">Export Vmf</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="receives_default">True</property>

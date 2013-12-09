@@ -25,7 +25,7 @@ def main(argv):
 			Gtk.Window.__init__(self, application=app)
 			self.set_title('Objective Vmf')
 			self.set_icon_from_file('asset/objective-vmf_128x128.png')
-			self.set_default_size(400, 200)
+			# self.set_default_size(400, 200)
 
 			grid = Gtk.Grid()
 			self.add(grid)
@@ -37,6 +37,10 @@ def main(argv):
 			grid.attach(ui_element_main.get_object('main'), 0, 0, 1, 1)
 
 			print('[Application] initialized')
+		def do_delete_event(self, event):
+			print('[Application] exit')
+			# Gtk.ApplicationWindow.do_delete_event(self, event)
+			sys.exit()
 
 
 	class ObjectiveVmfApplication(Gtk.Application):
@@ -49,10 +53,6 @@ def main(argv):
 
 		def do_startup(self):
 			Gtk.Application.do_startup(self)
-
-		def do_delete_event(self):
-			print('[Application] exit')
-			Gtk.Application.do_delete_event(self);
 
 
 	app = ObjectiveVmfApplication()
